@@ -1,9 +1,12 @@
 #include "Service.h"
+#include <iostream>
 Service::Service(int i) {
     if (i == 1) {
-        repo = new RepositoryCsv("C:/Users/petru/CLionProjects/FitnessTracker/ReadCSV");
+        repo = std::make_unique <RepositoryCsv>("C:/Users/petru/CLionProjects/FitnessTracker/ReadCSV");
+        path = 1;
     } else {
-        repo = new RepositoryJson("C:/Users/petru/CLionProjects/FitnessTracker/ReadJSON");
+        repo = std::make_unique<RepositoryJson>("C:/Users/petru/CLionProjects/FitnessTracker/ReadJSON");
+        path = 2;
     }
 }
 
@@ -92,7 +95,6 @@ void Service::redo() {
 vector<Exercise> Service::filter_combined(QString &day,int reps) {
     vector<Exercise> filtered;
     vector<Exercise> all = repo->getAll();
-
     for (Exercise& ex : all) {
         bool dayMatches = (day.isEmpty() || ex.getDay() == day);
         bool repsMatches = (reps == 0 || ex.getReps() * ex.getSets() >= reps);
@@ -104,4 +106,10 @@ vector<Exercise> Service::filter_combined(QString &day,int reps) {
 
 vector<Exercise> Service::get_all(){
     return repo->getAll();
+}
+Service::~Service(){
+    if (path == 1)
+        repo->save("C:/Users/petru/CLionProjects/FitnessTracker/ReadCSV");
+    else
+        repo->save("C:/Users/petru/CLionProjects/FitnessTracker/ReadJSON");
 }

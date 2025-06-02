@@ -65,3 +65,42 @@ RepositoryJson::RepositoryJson(QString path) : Repository(path) {
         file.close();
     }
 }
+void RepositoryJson::save(QString filePath) {
+    QJsonArray array;
+    for ( auto& exercise : v) {
+        QJsonObject obj;
+        obj["name"] = exercise.getName();
+        obj["day"] = exercise.getDay();
+        obj["sets"] = exercise.getSets();
+        obj["reps"] = exercise.getReps();
+        array.append(obj);
+    }
+
+    QJsonDocument doc(array);
+    QFile file(filePath);
+    if (file.open(QIODevice::WriteOnly)) {
+        file.write(doc.toJson());
+        file.close();
+        qDebug() << "Data saved to JSON successfully!";
+    } else {
+        qDebug() << "Failed to open JSON file for writing!";
+    }
+}
+void RepositoryCsv::save(QString filePath){
+    QFile file(filePath);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream out(&file);
+        for (auto& exercise : v) {
+            out << exercise.getName() << ","
+                << exercise.getDay() << ","
+                << exercise.getSets() << ","
+                << exercise.getReps() << "\n";
+        }
+        file.close();
+        qDebug() << "Data saved to CSV successfully!";
+    } else {
+        qDebug() << "Failed to open CSV file for writing!";
+    }
+}
+
+

@@ -1,62 +1,32 @@
 [
-  {
-    "name": "Push-ups",
-    "day": "Monday",
-    "sets": 3,
-    "reps": 15
-  },
-  {
-    "name": "Squats",
-    "day": "Monday",
-    "sets": 4,
-    "reps": 20
-  },
-  {
-    "name": "Pull-ups",
-    "day": "Tuesday",
-    "sets": 3,
-    "reps": 8
-  },
-  {
-    "name": "Lunges",
-    "day": "Tuesday",
-    "sets": 3,
-    "reps": 12
-  },
-  {
-    "name": "Bench Press",
-    "day": "Wednesday",
-    "sets": 4,
-    "reps": 10
-  },
-  {
-    "name": "Deadlifts",
-    "day": "Wednesday",
-    "sets": 3,
-    "reps": 6
-  },
-  {
-    "name": "Plank",
-    "day": "Thursday",
-    "sets": 3,
-    "reps": 60
-  },
-  {
-    "name": "Burpees",
-    "day": "Thursday",
-    "sets": 3,
-    "reps": 10
-  },
-  {
-    "name": "Mountain Climbers",
-    "day": "Friday",
-    "sets": 4,
-    "reps": 25
-  },
-  {
-    "name": "Jumping Jacks",
-    "day": "Friday",
-    "sets": 3,
-    "reps": 30
-  }
+    {
+        "day": "Monday",
+        "name": "Push-ups",
+        "reps": 15,
+        "sets": 3
+    },
+    {
+        "day": "Monday",
+        "name": "Squats",
+        "reps": 20,
+        "sets": 4
+    },
+    {
+        "day": "Thursday",
+        "name": "Plank",
+        "reps": 60,
+        "sets": 3
+    },
+    {
+        "day": "Thursday",
+        "name": "Burpees",
+        "reps": 10,
+        "sets": 3
+    },
+    {
+        "day": "Friday",
+        "name": "Jumping Jacks",
+        "reps": 30,
+        "sets": 3
+    }
 ]

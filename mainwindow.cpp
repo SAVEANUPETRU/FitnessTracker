@@ -9,7 +9,7 @@
 #include <QSpinBox>
 #include <QDialogButtonBox>
 #include <QComboBox>
-
+#include <iostream>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -176,13 +176,13 @@ void MainWindow::filterExercises()
 
     QComboBox *dayComboBox = new QComboBox(&filterDialog);
     dayComboBox->addItem("Any Day", "");
-    dayComboBox->addItem("Monday");
-    dayComboBox->addItem("Tuesday");
-    dayComboBox->addItem("Wednesday");
-    dayComboBox->addItem("Thursday");
-    dayComboBox->addItem("Friday");
-    dayComboBox->addItem("Saturday");
-    dayComboBox->addItem("Sunday");
+    dayComboBox->addItem("Monday","Monday");
+    dayComboBox->addItem("Tuesday","Tuesday");
+    dayComboBox->addItem("Wednesday","Wednesday");
+    dayComboBox->addItem("Thursday","Thursday");
+    dayComboBox->addItem("Friday","Friday");
+    dayComboBox->addItem("Saturday","Saturday");
+    dayComboBox->addItem("Sunday","Sunday");
     formLayout->addRow("Day:", dayComboBox);
 
     QSpinBox *minRepsSpinBox = new QSpinBox(&filterDialog);
@@ -204,7 +204,6 @@ void MainWindow::filterExercises()
 
         QString filterDay = day;
         int filterReps = minReps;
-
         auto filtered = service->filter_combined(filterDay, filterReps);
 
         QString resultMessage;

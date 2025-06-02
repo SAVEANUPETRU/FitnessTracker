@@ -2,11 +2,13 @@
 #define SERVICE_H
 #include "Repository.h"
 #include <QStack>
+#include <memory>
 class Service{
 private:
-    Repository* repo;
+    std::unique_ptr<Repository> repo;
     QStack<Action> s;
     QStack<Action> redoStack;
+    int path;
 
 public:
     Service(int i);
@@ -16,8 +18,8 @@ public:
     void add(QString name,QString day,int sets,int reps);
     void remove_ex(int i);
     void modify_ex(int i,QString name,QString day,int sets,int reps);
-    ~Service() { delete repo; }
     vector<Exercise>get_all();
+    ~Service();
 
 };
 #endif // SERVICE_H

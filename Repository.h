@@ -20,17 +20,19 @@ public:
     virtual void remove_ex(int i);
     virtual void modify_ex(int i,QString name,QString day,int sets,int reps);
     virtual std::vector<Exercise> getAll() const;
-
+    virtual void save(QString path) = 0;
 };
 
 class RepositoryCsv : public Repository{
 public:
     RepositoryCsv(QString path);
+    void save(QString path) override;
 };
 
 class RepositoryJson : public Repository{
 public:
     RepositoryJson(QString path);
+    void save(QString path) override;
 };
 
 #endif
